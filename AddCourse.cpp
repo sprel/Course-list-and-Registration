@@ -8,7 +8,7 @@ using std::to_string;
 
 Course& cinCourseInfo(Course& c) {
 	//강의명, 학점, 요일, 시간, 전공/교양, 교수명
-
+	
 	string courseName;
 	cout << "강의명: ";
 	cin >> courseName;
@@ -98,11 +98,77 @@ Course& cinCourseInfo(Course& c) {
 	return c;
 }
 
+void fwriteCoureseInfo(Course& c) {
+	FILE* fp;
+	fp = fopen("./lectureList.txt", "a");
+	if (fp == nullptr) {
+		cout << "파일 열기 실패";
+		return;
+	}
 
+	fputs(c.courseName.c_str(), fp);
+	fputs("|", fp);
+	fputs(c.professorName.c_str(), fp);
+	fputs("|", fp);
+	if (!c.major) {
+		fputs("전공", fp);
+	}
+	else {
+		fputs("교양", fp);
+	}
+	fputs("|", fp);
+	fputc(c.credit + 48, fp);
+	fputs("|", fp);
+	switch (c.day1) {
+		case MON:
+			fputs("월", fp);
+			break;
+		case TUE:
+			fputs("화", fp);
+			break;
+		case WED:
+			fputs("수", fp);
+			break;
+		case THU:
+			fputs("목", fp);
+			break;
+		case FRI:
+			fputs("금", fp);
+			break;
+	}
+	if (c.day2 != DEFAULT)
+		fputs("&", fp);
+	switch (c.day2) {
+		case DEFAULT:
+			break;
+		case MON:
+			fputs("월", fp);
+			break;
+		case TUE:
+			fputs("화", fp);
+			break;
+		case WED:
+			fputs("수", fp);
+			break;
+		case THU:
+			fputs("목", fp);
+			break;
+		case FRI:
+			fputs("금", fp);
+			break;
+	}
+	fputs("|", fp);
+	fputs(to_string(c.startTime).c_str(), fp);
+	fputs("~", fp);
+	fputs(to_string(c.endTime).c_str(), fp);
+	fputs("\n", fp);
+
+	fclose(fp);
+}
 
 void addCourse() {
 	Course c;
 	c = cinCourseInfo(c);
 
-	
+	fwriteCoureseInfo(c);
 }
