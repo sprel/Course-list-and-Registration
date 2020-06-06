@@ -1,4 +1,6 @@
-﻿#include <iostream>
+﻿#include "functionPrototype.h"
+
+#include <iostream>
 #include <Windows.h>
 #include <conio.h>
 
@@ -64,10 +66,13 @@ int main() {
 	int menu = 0;
 	bool flag = 1;
 	while (flag) {
-		switch (menu = selectMenu_Main()) {
+		menu = selectMenu_Main();
+		system("cls");
+		switch (menu) {
 			case 1:
 				break;
 			case 2:
+				addCourse();
 				break;
 			case 3:
 				break;
