@@ -70,7 +70,6 @@ int main() {
 		system("cls");
 		switch (menu) {
 			case 1:
-				courseList();
 				break;
 			case 2:
 				addCourse();
@@ -84,6 +83,7 @@ int main() {
 	}
 
 	system("cls");
+	gotoxy(10, 10);
 	cout << "프로그램 종료" << '\n';
 
 	return 0;
