@@ -1,0 +1,4 @@
+강의명,교수명,전공/교양,학점,요일1&요일2,시작시각~마치는시각
+testcourse,nuguri,0,3,1월,수,9~12
+tester|super|0|3|&|1~3
+testcourse|nuguri|전공|3|수&금|3~6
