@@ -100,7 +100,7 @@ Course& cinCourseInfo(Course& c) {
 
 void fwriteCoureseInfo(Course& c) {
 	FILE* fp;
-	fp = fopen("./lectureList.txt", "a");
+	fp = fopen("./courseList.txt", "a");
 	if (fp == nullptr) {
 		cout << "파일 열기 실패";
 		return;
