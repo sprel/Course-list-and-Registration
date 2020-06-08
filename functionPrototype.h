@@ -14,8 +14,8 @@ enum Day {
 };
 
 struct Course {
-	char courseName[40];  //강의명
-	char professorName[10];  //교수명
+	string courseName;  //강의명
+	string professorName;  //교수명
 	bool major;  //major or liberal art
 	int credit;  //학점
 	Day day1;  //요일
@@ -24,10 +24,6 @@ struct Course {
 	int endTime;  //마침시각
 };
 
-//AddCourse.cpp
 Course& cinCourseInfo(Course& c);
 void fwriteCoureseInfo(Course& c);
 void addCourse();
-
-//CourseList.cpp
-void courseList();
