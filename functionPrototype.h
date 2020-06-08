@@ -14,8 +14,8 @@ enum Day {
 };
 
 struct Course {
-	string courseName;  //강의명
-	string professorName;  //교수명
+	char courseName[40];  //강의명
+	char professorName[10];  //교수명
 	bool major;  //major or liberal art
 	int credit;  //학점
 	Day day1;  //요일
