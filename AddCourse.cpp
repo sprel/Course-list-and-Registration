@@ -9,15 +9,15 @@ using std::to_string;
 Course& cinCourseInfo(Course& c) {
 	//강의명, 학점, 요일, 시간, 전공/교양, 교수명
 	
-	string courseName;
+	char cName[40];
 	cout << "강의명: ";
-	cin >> courseName;
-	c.courseName = courseName;
+	cin >> cName;
+	strcpy(c.courseName, cName);
 
-	string professorName;
+	char pName[10];
 	cout << "교수명: ";
-	cin >> professorName;
-	c.professorName = professorName;
+	cin >> pName;
+	strcpy(c.professorName, pName);
 
 	bool temp;
 	cout << "전공/교양 여부 - (전공이면 0, 교양이면 1 입력): ";
@@ -93,7 +93,6 @@ Course& cinCourseInfo(Course& c) {
 	cin >> end;
 	c.endTime = end;
 
-	system("cls");
 
 	return c;
 }
@@ -106,15 +105,15 @@ void fwriteCoureseInfo(Course& c) {
 		return;
 	}
 
-	fputs(c.courseName.c_str(), fp);
+	fputs(c.courseName, fp);
 	fputs("|", fp);
-	fputs(c.professorName.c_str(), fp);
+	fputs(c.professorName, fp);
 	fputs("|", fp);
 	if (!c.major) {
-		fputs("전공", fp);
+		fputc(48, fp);
 	}
 	else {
-		fputs("교양", fp);
+		fputc(49, fp);
 	}
 	fputs("|", fp);
 	fputc(c.credit + 48, fp);
@@ -171,4 +170,8 @@ void addCourse() {
 	c = cinCourseInfo(c);
 
 	fwriteCoureseInfo(c);
+
+	cout << "강의 추가 성공" << '\n';
+	system("pause");
+	system("cls");
 }
