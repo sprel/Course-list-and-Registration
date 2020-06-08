@@ -24,6 +24,10 @@ struct Course {
 	int endTime;  //마침시각
 };
 
+//AddCourse.cpp
 Course& cinCourseInfo(Course& c);
 void fwriteCoureseInfo(Course& c);
 void addCourse();
+
+//CourseList.cpp
+void courseList();
