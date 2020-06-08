@@ -110,10 +110,10 @@ void fwriteCoureseInfo(Course& c) {
 	fputs(c.professorName, fp);
 	fputs("|", fp);
 	if (!c.major) {
-		fputs("전공", fp);
+		fputc(48, fp);
 	}
 	else {
-		fputs("교양", fp);
+		fputc(49, fp);
 	}
 	fputs("|", fp);
 	fputc(c.credit + 48, fp);
