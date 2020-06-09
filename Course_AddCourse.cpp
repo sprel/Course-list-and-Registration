@@ -176,11 +176,7 @@ void addCourse() {
 	c = cinCourseInfo(c);
 	const char* filename = "./courseList.txt";
 
-<<<<<<< HEAD:AddCourse.cpp
-	fwriteCoureseInfo(c);
-=======
 	fwriteCoureseInfo(filename, c);
->>>>>>> feature/courseList:Course_AddCourse.cpp
 
 	cout << "강의 추가 성공" << '\n';
 	system("pause");
