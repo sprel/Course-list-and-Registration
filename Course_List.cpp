@@ -265,12 +265,13 @@ void courseList() {
 				pageNum--;
 				break;
 			case 3:
-				system("cls");
 				//수강신청
+				registration(c);
 				break;
 			case 4:
-				system("cls");
 				//바구니에 담기
+				//baguni();
+				system("cls");
 				break;
 			case 5:
 				flag = 0;
