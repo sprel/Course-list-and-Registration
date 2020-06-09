@@ -236,29 +236,47 @@ void courseList() {
 
 	freadCourse(c, courseNum);
 
-	gotoxy(20, 1);
-	cout << "<강의 시간표 조회>";
 
-	gotoxy(5, 3);
-	cout << "강의명  ";
-	gotoxy(26, 3);
-	cout << "교수명  ";
-	gotoxy(37, 3);
-	cout << "전공/교양  ";
-	gotoxy(47, 3);
-	cout << "학점  ";
-	gotoxy(52, 3);
-	cout << "요일  ";
-	gotoxy(58, 3);
-	cout << "강의시간  ";
-	cout << '\n';
+	int menu = 0;
+	int start = 0;
+	bool flag = 1;
+	int pageNum = 1;
+	int endPage = ((courseNum - 1) / 10) + 1;
+	while (flag) {
+		start = (pageNum - 1) * 10;
+		coutItemname();
+		for (int i = start; i < start + 10; i++) {
+			if (i < courseNum)
+				coutCourse(c[i], (i + 1) * 2);
+		}
+		menu = selectMenu(courseNum, pageNum, endPage);
+		switch (menu) {
+			case 1:
+				pageNum++;
+				break;
+			case 2:
+				pageNum--;
+				break;
+			case 3:
+				system("cls");
+				//수강신청
+				break;
+			case 4:
+				system("cls");
+				//바구니에 담기
+				break;
+			case 5:
+				flag = 0;
+				break;
+		}
 
-	for (int i = 0; i < courseNum; i++) {
-		coutCourse(c[i], i + 1);
+
 	}
+
 
 	system("pause");
 	system("cls");
 
 	delete[] c;
 }
+
