@@ -146,19 +146,19 @@ int lineCounter() {
 void coutCourse(Course& c, const int& cNum) {
 
 	gotoxy(5, 3 + cNum);
-	cout << c.courseName << " ";
-	gotoxy(26, 3 + cNum);
-	cout << c.professorName << " ";
-	gotoxy(37, 3 + cNum);
+	cout << c.courseName;
+	gotoxy(30, 3 + cNum);
+	cout << c.professorName;
+	gotoxy(45, 3 + cNum);
 	if (!c.major) {
-		cout << "전공 ";
+		cout << "전공";
 	}
 	else {
-		cout << "교양 ";
+		cout << "교양";
 	}
-	gotoxy(47, 3 + cNum);
-	cout << c.credit << " ";
-	gotoxy(52, 3 + cNum);
+	gotoxy(55, 3 + cNum);
+	cout << c.credit;
+	gotoxy(60, 3 + cNum);
 	switch (c.day1) {
 		case MON:
 			cout << "월";
@@ -199,8 +199,31 @@ void coutCourse(Course& c, const int& cNum) {
 				break;
 		}
 	}
-	gotoxy(58, 3 + cNum);
-	cout << c.startTime << "~" << c.endTime << '\n';
+	gotoxy(70, 3 + cNum);
+	cout << c.startTime << "~" << c.endTime;
+	gotoxy(80, 3 + cNum);
+	cout << c.classroom;
+}
+
+void coutItemname() {
+	gotoxy(40, 1);
+	cout << "<강의 시간표 조회>";
+
+	gotoxy(5, 3);
+	cout << "강의명";
+	gotoxy(30, 3);
+	cout << "교수명";
+	gotoxy(45, 3);
+	cout << "전공/교양";
+	gotoxy(55, 3);
+	cout << "학점";
+	gotoxy(60, 3);
+	cout << "요일";
+	gotoxy(70, 3);
+	cout << "강의시간";
+	gotoxy(80, 3);
+	cout << "강의실";
+	cout << '\n';
 }
 
 void courseList() {
