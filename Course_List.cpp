@@ -256,7 +256,7 @@ void courseList() {
 			}
 		}
 
-		menu = selectMenu(num_course, pageNum, endPage);
+		menu = selectMenu(pageNum, endPage);
 		switch (menu) {
 			case 1:
 				pageNum++;
