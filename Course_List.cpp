@@ -237,7 +237,7 @@ void courseList() {
 	int num_course;
 	num_course = lineCounter(filename);
 
-	c = new Course[courseNum];
+	c = new Course[num_course];
 
 	freadCourse(filename, c, num_course);
 
@@ -246,7 +246,7 @@ void courseList() {
 	int start = 0;
 	bool flag = 1;
 	int pageNum = 1;
-	int endPage = ((courseNum - 1) / 10) + 1;
+	int endPage = ((num_course - 1) / 10) + 1;
 	while (flag) {
 		start = (pageNum - 1) * 10;
 		coutItemname();
@@ -255,7 +255,8 @@ void courseList() {
 				coutCourse(c[i], i + 1);
 			}
 		}
-		menu = selectMenu(courseNum, pageNum, endPage);
+
+		menu = selectMenu(num_course, pageNum, endPage);
 		switch (menu) {
 			case 1:
 				pageNum++;
