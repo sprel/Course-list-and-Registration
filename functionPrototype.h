@@ -24,6 +24,9 @@ struct Course {
 	int endTime;  //마침시각
 };
 
+//Common
+void gotoxy(int x, int y);
+
 //AddCourse.cpp
 Course& cinCourseInfo(Course& c);
 void fwriteCoureseInfo(Course& c);
