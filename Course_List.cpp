@@ -8,9 +8,9 @@
 
 using std::cout;
 
-void freadCourse(Course* c, int& lines) {
+void freadCourse(const char* filename, Course* c, int& lines) {
 	FILE* fp;
-	fp = fopen("./courseList.txt", "r");
+	fp = fopen(filename, "r");
 	if (fp == nullptr) {
 		cout << "파일 열기 실패";
 		return;
@@ -124,9 +124,9 @@ void freadCourse(Course* c, int& lines) {
 
 }
 
-int lineCounter() {
+int lineCounter(const char* filename) {
 	FILE* fp;
-	fp = fopen("./courseList.txt", "r");
+	fp = fopen(filename, "r");
 	if (fp == nullptr) {
 		cout << "파일 열기 실패";
 		return -1;
@@ -228,13 +228,14 @@ void coutItemname() {
 
 void courseList() {
 	Course* c;
+	const char* filename = "./courseList.txt";
 
-	int courseNum;
-	courseNum = lineCounter();
+	int num_course;
+	num_course = lineCounter(filename);
 
 	c = new Course[courseNum];
 
-	freadCourse(c, courseNum);
+	freadCourse(filename, c, num_course);
 
 
 	int menu = 0;
