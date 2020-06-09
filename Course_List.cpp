@@ -145,20 +145,24 @@ int lineCounter(const char* filename) {
 
 void coutCourse(Course& c, const int& cNum) {
 
-	gotoxy(5, 3 + cNum);
+	int pos = cNum * 2 + 3;
+
+	gotoxy(2, pos);
+	cout << cNum;
+	gotoxy(5, pos);
 	cout << c.courseName;
-	gotoxy(30, 3 + cNum);
+	gotoxy(30, pos);
 	cout << c.professorName;
-	gotoxy(45, 3 + cNum);
+	gotoxy(45, pos);
 	if (!c.major) {
 		cout << "전공";
 	}
 	else {
 		cout << "교양";
 	}
-	gotoxy(55, 3 + cNum);
+	gotoxy(55, pos);
 	cout << c.credit;
-	gotoxy(60, 3 + cNum);
+	gotoxy(60, pos);
 	switch (c.day1) {
 		case MON:
 			cout << "월";
@@ -199,9 +203,9 @@ void coutCourse(Course& c, const int& cNum) {
 				break;
 		}
 	}
-	gotoxy(70, 3 + cNum);
+	gotoxy(70, pos);
 	cout << c.startTime << "~" << c.endTime;
-	gotoxy(80, 3 + cNum);
+	gotoxy(80, pos);
 	cout << c.classroom;
 }
 
@@ -247,8 +251,9 @@ void courseList() {
 		start = (pageNum - 1) * 10;
 		coutItemname();
 		for (int i = start; i < start + 10; i++) {
-			if (i < courseNum)
-				coutCourse(c[i], (i + 1) * 2);
+			if (i < num_course) {
+				coutCourse(c[i], i + 1);
+			}
 		}
 		menu = selectMenu(courseNum, pageNum, endPage);
 		switch (menu) {
@@ -274,8 +279,6 @@ void courseList() {
 
 	}
 
-
-	system("pause");
 	system("cls");
 
 	delete[] c;
