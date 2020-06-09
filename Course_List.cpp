@@ -1,7 +1,10 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #pragma warning(disable: 6385)
+#pragma once
+
 #include <iostream>
 #include "functionPrototype.h"
+
 
 using std::cout;
 
@@ -86,11 +89,11 @@ void freadCourse(Course* c, int& lines) {
 		i = 0;
 		do {
 			time[i++] = fgetc(fp);
-		} while (time[i - 1] != '\n');
+		} while (time[i - 1] != '|');
 
 		if (time[1] == '~') {
 			c[j].startTime = time[0] - 48;
-			if (time[3] == '\n') {
+			if (time[3] == '|') {
 				c[j].endTime = time[2] - 48;
 			}
 			else {
@@ -99,13 +102,23 @@ void freadCourse(Course* c, int& lines) {
 		}
 		else {
 			c[j].startTime = 10 + (time[0] - 48);
-			if (time[4] == '\n') {
+			if (time[4] == '|') {
 				c[j].endTime = time[3] - 48;
 			}
 			else {
 				c[j].endTime = 10 + (time[4] - 48);
 			}
 		}
+
+		char room[20] = "";
+		i = 0;
+		while (true) {
+			temp = fgetc(fp);
+			if (temp == '\n')
+				break;
+			room[i++] = temp;
+		}
+		strcpy(c[j].classroom, room);
 
 	}
 

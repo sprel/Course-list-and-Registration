@@ -93,6 +93,10 @@ Course& cinCourseInfo(Course& c) {
 	cin >> end;
 	c.endTime = end;
 
+	char room[20];
+	cout << "강의실: ";
+	cin >> room;
+	strcpy(c.classroom, room);
 
 	return c;
 }
@@ -160,6 +164,8 @@ void fwriteCoureseInfo(Course& c) {
 	fputs(to_string(c.startTime).c_str(), fp);
 	fputs("~", fp);
 	fputs(to_string(c.endTime).c_str(), fp);
+	fputs("|", fp);
+	fputs(c.classroom, fp);
 	fputs("\n", fp);
 
 	fclose(fp);

@@ -22,6 +22,7 @@ struct Course {
 	Day day2;  //주 2회 강의인 경우 사용
 	int startTime;  //시작시각
 	int endTime;  //마침시각
+	char classroom[20];  //강의실
 };
 
 //Common
