@@ -1,4 +1,5 @@
-﻿#include "functionPrototype.h"
+﻿#pragma once
+#include "functionPrototype.h"
 
 #include <iostream>
 #include <Windows.h>
@@ -32,7 +33,7 @@ int selectMenu_Main() {
 
 	while (true) {
 		gotoxy(x - 2, pos);
-		Sleep(1000);
+		Sleep(200);
 		if (_kbhit()) {
 			key = _getch();
 			if (key == 13) {
@@ -52,9 +53,6 @@ int selectMenu_Main() {
 							pos += 2;
 						}
 						break;
-					default:
-						cout << "기본" << '\n';
-						break;
 				}
 			}
 		}
@@ -63,7 +61,7 @@ int selectMenu_Main() {
 
 int main() {
 
-	int menu = 0;
+	int menu = 1;
 	bool flag = 1;
 	while (flag) {
 		menu = selectMenu_Main();

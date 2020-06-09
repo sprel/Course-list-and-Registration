@@ -93,13 +93,17 @@ Course& cinCourseInfo(Course& c) {
 	cin >> end;
 	c.endTime = end;
 
+	char room[20];
+	cout << "강의실: ";
+	cin >> room;
+	strcpy(c.classroom, room);
 
 	return c;
 }
 
-void fwriteCoureseInfo(Course& c) {
+void fwriteCoureseInfo(const char* filename, Course& c) {
 	FILE* fp;
-	fp = fopen("./courseList.txt", "a");
+	fp = fopen(filename, "a");
 	if (fp == nullptr) {
 		cout << "파일 열기 실패";
 		return;
@@ -160,6 +164,8 @@ void fwriteCoureseInfo(Course& c) {
 	fputs(to_string(c.startTime).c_str(), fp);
 	fputs("~", fp);
 	fputs(to_string(c.endTime).c_str(), fp);
+	fputs("|", fp);
+	fputs(c.classroom, fp);
 	fputs("\n", fp);
 
 	fclose(fp);
@@ -168,8 +174,13 @@ void fwriteCoureseInfo(Course& c) {
 void addCourse() {
 	Course c;
 	c = cinCourseInfo(c);
+	const char* filename = "./courseList.txt";
 
+<<<<<<< HEAD:AddCourse.cpp
 	fwriteCoureseInfo(c);
+=======
+	fwriteCoureseInfo(filename, c);
+>>>>>>> feature/courseList:Course_AddCourse.cpp
 
 	cout << "강의 추가 성공" << '\n';
 	system("pause");

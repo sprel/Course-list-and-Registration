@@ -1,6 +1,11 @@
 ﻿#pragma once
 #include <string>
 
+#define LEFT 75
+#define RIGHT 77
+#define UP 72
+#define DOWN 80
+
 using std::string;
 
 enum Day {
@@ -22,12 +27,25 @@ struct Course {
 	Day day2;  //주 2회 강의인 경우 사용
 	int startTime;  //시작시각
 	int endTime;  //마침시각
+	char classroom[20];  //강의실
 };
 
-//AddCourse.cpp
+//Common
+void gotoxy(int x, int y);
+
+//Course_AddCourse.cpp
 Course& cinCourseInfo(Course& c);
-void fwriteCoureseInfo(Course& c);
+void fwriteCoureseInfo(const char* filename, Course& c);
 void addCourse();
 
-//CourseList.cpp
+//Course_List.cpp
 void courseList();
+void freadCourse(const char* filename, Course* c, int& lines);
+void coutCourse(Course& c, const int& cNum);
+int lineCounter(const char* filename);
+
+//Course_SelecMenu.cpp
+int selectMenu(int& pageNum, int& endPage);
+
+//Course_Registration.cpp
+void registration(Course* c);
