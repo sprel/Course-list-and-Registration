@@ -5,7 +5,7 @@
 using std::cout;
 using std::cin;
 
-int selectCourse() {
+int selectCourse(const char* message) {
 	gotoxy(0, 25);
 	cout << "                                                   ";
 	cout << "                                                   ";
@@ -18,7 +18,7 @@ int selectCourse() {
 
 	gotoxy(3, 26);
 	int courseNum = 0;
-	cout << "수강 신청할 강의 번호를 입력하세요: ";
+	cout << message;
 	cin >> courseNum;
 	
 	return 0;
@@ -28,7 +28,7 @@ int selectCourse() {
 void registration(Course* c) {
 
 	int courseNum = 0;
-	courseNum = selectCourse();
+	courseNum = selectCourse("수강 신청할 강의 번호를 입력하세요: ");
 
 	const char* filename = "./timetable.txt";
 	//내 시간표랑 겹치는지 체크

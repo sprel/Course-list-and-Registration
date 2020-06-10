@@ -49,3 +49,4 @@ int selectMenu(int& pageNum, int& endPage);
 
 //Course_Registration.cpp
 void registration(Course* c);
+int selectCourse(const char* message);
