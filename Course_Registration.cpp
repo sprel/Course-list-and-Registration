@@ -1,9 +1,11 @@
 ﻿#pragma once
 #include "functionPrototype.h"
 #include <iostream>
+#include <vector>
 
 using std::cout;
 using std::cin;
+using std::vector;
 
 int selectCourse(const char* message) {
 	gotoxy(0, 25);
@@ -25,17 +27,17 @@ int selectCourse(const char* message) {
 }
 
 
-void registration(Course* c) {
+void registration(vector<Course>& c) {
 
 	int courseNum = 0;
-	courseNum = selectCourse("수강 신청할 강의 번호를 입력하세요: ");
+	courseNum = selectCourse("(수강 신청) 강의 번호 입력: ");
 
 	const char* filename = "./timetable.txt";
 	//내 시간표랑 겹치는지 체크
-	Course* myC;
 
 	int num_myCourse = lineCounter(filename);
-	myC = new Course[num_myCourse];
+	vector<Course> myC;
+	myC.resize(num_myCourse);
 
 	freadCourse(filename, myC, num_myCourse);
 
@@ -66,7 +68,4 @@ void registration(Course* c) {
 		system("cls");
 	}
 
-	//파일로 출력
-
-	delete[] myC;
 }

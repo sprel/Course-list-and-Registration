@@ -2,13 +2,14 @@
 #pragma warning(disable: 6385)
 #pragma once
 
-#include <iostream>
 #include "functionPrototype.h"
-
+#include <iostream>
+#include <vector>
 
 using std::cout;
+using std::vector;
 
-void freadCourse(const char* filename, Course* c, int& lines) {
+void freadCourse(const char* filename, vector<Course>& c, int& lines) {
 	FILE* fp;
 	fp = fopen(filename, "r");
 	if (fp == nullptr) {
@@ -231,16 +232,16 @@ void coutItemname() {
 }
 
 void courseList() {
-	Course* c;
+
 	const char* filename = "./courseList.txt";
 
 	int num_course;
 	num_course = lineCounter(filename);
 
-	c = new Course[num_course];
+	vector<Course> c;
+	c.resize(num_course);
 
 	freadCourse(filename, c, num_course);
-
 
 	int menu = 0;
 	int start = 0;
