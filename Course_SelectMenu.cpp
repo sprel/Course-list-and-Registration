@@ -7,39 +7,7 @@
 
 using std::cout;
 
-int selectMenu(int& pageNum, int& endPage) {
-
-	gotoxy(3, 25);
-	printf("┌--------------┐");
-	gotoxy(3, 26);
-	printf("│  이전 페이지 │");
-	gotoxy(3, 27);
-	printf("└--------------┘");
-	gotoxy(24, 25);
-	printf("┌--------------┐");
-	gotoxy(24, 26);
-	printf("│  다음 페이지 │");
-	gotoxy(24, 27);
-	printf("└--------------┘");
-	gotoxy(45, 25);
-	printf("┌--------------┐");
-	gotoxy(45, 26);
-	printf("│   수강 신청  │");
-	gotoxy(45, 27);
-	printf("└--------------┘");
-	gotoxy(66, 25);
-	printf("┌----------------┐");
-	gotoxy(66, 26);
-	printf("│  바구니에 담기 │");
-	gotoxy(66, 27);
-	printf("└----------------┘");
-	gotoxy(87, 25);
-	printf("┌-----------┐");
-	gotoxy(87, 26);
-	printf("│  뒤로가기 │");
-	gotoxy(87, 27);
-	printf("└-----------┘");
-
+int moveCursor() {
 	int pos = 0;
 	int key = 0;
 
@@ -84,7 +52,43 @@ int selectMenu(int& pageNum, int& endPage) {
 		}
 	}
 
-	int menu = (pos - 1) / 21 + 1;
+	return (pos - 1) / 21 + 1;
+}
+
+int selectMenu(int& pageNum, int& endPage) {
+
+	gotoxy(3, 25);
+	printf("┌--------------┐");
+	gotoxy(3, 26);
+	printf("│  이전 페이지 │");
+	gotoxy(3, 27);
+	printf("└--------------┘");
+	gotoxy(24, 25);
+	printf("┌--------------┐");
+	gotoxy(24, 26);
+	printf("│  다음 페이지 │");
+	gotoxy(24, 27);
+	printf("└--------------┘");
+	gotoxy(45, 25);
+	printf("┌--------------┐");
+	gotoxy(45, 26);
+	printf("│   수강 신청  │");
+	gotoxy(45, 27);
+	printf("└--------------┘");
+	gotoxy(66, 25);
+	printf("┌----------------┐");
+	gotoxy(66, 26);
+	printf("│  바구니에 담기 │");
+	gotoxy(66, 27);
+	printf("└----------------┘");
+	gotoxy(87, 25);
+	printf("┌-----------┐");
+	gotoxy(87, 26);
+	printf("│  뒤로가기 │");
+	gotoxy(87, 27);
+	printf("└-----------┘");
+
+	int menu = moveCursor();
 
 	if (menu == 1) {
 		if (pageNum == 1) {
