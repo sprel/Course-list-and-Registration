@@ -85,6 +85,7 @@ void freadCourse(const char* filename, vector<Course>& c, int& lines) {
 		else {
 			c[j].day2 = DEFAULT;
 		}
+		fgetc(fp);
 
 		char time[10];
 		i = 0;
@@ -161,9 +162,9 @@ void coutCourse(Course& c, const int& cNum) {
 	else {
 		cout << "교양";
 	}
-	gotoxy(55, pos);
-	cout << c.credit;
 	gotoxy(60, pos);
+	cout << c.credit;
+	gotoxy(70, pos);
 	switch (c.day1) {
 		case MON:
 			cout << "월";
@@ -181,11 +182,9 @@ void coutCourse(Course& c, const int& cNum) {
 			cout << "금";
 			break;
 	}
-	cout << " ";
+
 	if (c.day2 != DEFAULT) {
-		cout << "&" << c.day2 << " ";
-	}
-	else {
+		cout << "&";
 		switch (c.day2) {
 			case MON:
 				cout << "월";
@@ -204,9 +203,10 @@ void coutCourse(Course& c, const int& cNum) {
 				break;
 		}
 	}
-	gotoxy(70, pos);
-	cout << c.startTime << "~" << c.endTime;
+
 	gotoxy(80, pos);
+	cout << c.startTime << "~" << c.endTime;
+	gotoxy(90, pos);
 	cout << c.classroom;
 }
 
@@ -220,13 +220,13 @@ void coutItemname() {
 	cout << "교수명";
 	gotoxy(45, 3);
 	cout << "전공/교양";
-	gotoxy(55, 3);
-	cout << "학점";
 	gotoxy(60, 3);
-	cout << "요일";
+	cout << "학점";
 	gotoxy(70, 3);
-	cout << "강의시간";
+	cout << "요일";
 	gotoxy(80, 3);
+	cout << "강의시간";
+	gotoxy(90, 3);
 	cout << "강의실";
 	cout << '\n';
 }
@@ -283,7 +283,5 @@ void courseList() {
 	}
 
 	system("cls");
-
-	delete[] c;
 }
 
