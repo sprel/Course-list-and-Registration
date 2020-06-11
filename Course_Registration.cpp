@@ -41,21 +41,27 @@ void registration(vector<Course>& c) {
 
 	freadCourse(filename, myC, num_myCourse);
 
-	bool dupl = 0;
+	bool duplName = 0;
+	bool duplTime = 0;
 	for (int i = 0; i < num_myCourse; i++) {
+		if (strcmp(c[courseNum].courseName, myC[i].courseName) == 0) {
+			duplName = 1;
+			break;
+		}
 		if (c[courseNum].day1 == myC[i].day1 || c[courseNum].day1 == myC[i].day2 || c[courseNum].day2 == myC[i].day1 || c[courseNum].day2 == myC[i].day2) {
 			if (!(c[courseNum].endTime <= myC[i].startTime || c[courseNum].startTime >= myC[i].endTime)) {
-				dupl = 1;
+				duplTime = 1;
 				break;
 			}
 		}
 	}
 
 	gotoxy(3, 27);
-	if (dupl) {
-		cout << "※ 이미 수강 신청한 강의와 중복되는 시간대의 강의는 수강 신청할 수 없습니다." << '\n';
-		system("pause");
-		system("cls");
+	if (duplName) {
+		cout << "※(실패) 이미 수강 신청한 강의입니다." << '\n';
+	}
+	if (duplTime) {
+		cout << "※(실패) 이미 수강 신청한 강의와 중복되는 시간대의 강의입니다." << '\n';
 	}
 	else {
 		fwriteCoureseInfo(filename, c[courseNum]);
@@ -64,8 +70,8 @@ void registration(vector<Course>& c) {
 		cout << "  ";
 		gotoxy(3, 28);
 		cout << "해당 강의 수강 신청 성공";
-		system("pause");
-		system("cls");
 	}
+	system("pause");
+	system("cls");
 
 }
