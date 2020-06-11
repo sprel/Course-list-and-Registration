@@ -44,12 +44,12 @@ void registration(vector<Course>& c) {
 	bool duplName = 0;
 	bool duplTime = 0;
 	for (int i = 0; i < num_myCourse; i++) {
-		if (strcmp(c[courseNum].courseName, myC[i].courseName) == 0) {
+		if (strcmp(c[courseNum-1].courseName, myC[i].courseName) == 0) {
 			duplName = 1;
 			break;
 		}
-		if (c[courseNum].day1 == myC[i].day1 || c[courseNum].day1 == myC[i].day2 || c[courseNum].day2 == myC[i].day1 || c[courseNum].day2 == myC[i].day2) {
-			if (!(c[courseNum].endTime <= myC[i].startTime || c[courseNum].startTime >= myC[i].endTime)) {
+		if (c[courseNum-1].day1 == myC[i].day1 || c[courseNum-1].day1 == myC[i].day2 || c[courseNum-1].day2 == myC[i].day1 || c[courseNum-1].day2 == myC[i].day2) {
+			if (!(c[courseNum-1].endTime <= myC[i].startTime || c[courseNum-1].startTime >= myC[i].endTime)) {
 				duplTime = 1;
 				break;
 			}
@@ -64,8 +64,8 @@ void registration(vector<Course>& c) {
 		cout << "※(실패) 이미 수강 신청한 강의와 중복되는 시간대의 강의입니다." << '\n';
 	}
 	else {
-		fwriteCoureseInfo(filename, c[courseNum]);
-		coutCourse(c[courseNum], 12);
+		fwriteCoureseInfo(filename, c[courseNum-1]);
+		coutCourse(c[courseNum-1], 12);
 		gotoxy(2, 27);
 		cout << "  ";
 		gotoxy(3, 28);
