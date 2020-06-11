@@ -29,9 +29,17 @@ Course& cinCourseInfo(Course& c) {
 	cin >> credit;
 	c.credit = credit;
 
-	char twotimes;
-	cout << "주 2회 강의 여부(y/n): ";
-	cin >> twotimes;
+	char twotimes = ' ';
+	while (true) {
+		cout << "주 2회 강의 여부(y/n): ";
+		cin >> twotimes;
+		if (twotimes != 'y' && twotimes != 'n') {
+			cout << "잘못된 값을 입력하셨습니다.";
+		}
+		else {
+			break;
+		}
+	}
 
 	int day1 = 0;
 	int day2 = 0;
