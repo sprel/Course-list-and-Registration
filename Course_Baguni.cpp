@@ -17,7 +17,7 @@ void putinBaguni(vector<Course>& c) {
 	freadCourse(filename, baguniC, num_baguni);
 
 	int courseNum = 0;
-	courseNum = selectCourse("(수강 바구니) 강의 번호 입력: ");
+	courseNum = selectCourse("(수강 바구니) 강의 ", 26);
 
 	bool dupl = 0;
 	for (int i = 0; i < num_baguni; i++) {

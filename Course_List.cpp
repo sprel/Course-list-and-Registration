@@ -268,7 +268,7 @@ void courseList() {
 				break;
 			case 3:
 				//수강신청
-				registration(c);
+				registration(c, 27);
 				break;
 			case 4:
 				//바구니에 담기
@@ -282,7 +282,6 @@ void courseList() {
 
 
 	}
-
 	system("cls");
 }
 

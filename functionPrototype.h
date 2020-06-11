@@ -43,15 +43,17 @@ void addCourse();
 //Course_List.cpp
 void courseList();
 void freadCourse(const char* filename, vector<Course>& c, int& lines);
+void coutItemname(const char* title);
 void coutCourse(Course& c, const int& cNum);
 int lineCounter(const char* filename);
 
 //Course_SelecMenu.cpp
 int selectMenu(int& pageNum, int& endPage);
+int moveCursor(int posY);
 
 //Course_Registration.cpp
-void registration(vector<Course>& c);
-int selectCourse(const char* message);
+int registration(vector<Course>& c, int posY);
+int selectCourse(const char* message, int posY);
 
 //Timetable.cpp
 void myTable();

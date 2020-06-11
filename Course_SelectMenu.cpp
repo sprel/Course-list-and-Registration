@@ -7,12 +7,12 @@
 
 using std::cout;
 
-int moveCursor() {
+int moveCursor(int posY) {
 	int pos = 0;
 	int key = 0;
 
 	pos = 1;
-	gotoxy(pos, 26);
+	gotoxy(pos, posY);
 	printf("▶");
 	while (1)
 	{
@@ -28,20 +28,20 @@ int moveCursor() {
 					case LEFT:
 						if (pos > 1)
 						{
-							gotoxy(pos, 26);
+							gotoxy(pos, posY);
 							printf("  ");
 							pos = pos - 21;
-							gotoxy(pos, 26);
+							gotoxy(pos, posY);
 							printf("▶");
 						}
 						break;
 					case RIGHT:
 						if (pos < 85)
 						{
-							gotoxy(pos, 26);
+							gotoxy(pos, posY);
 							printf("  ");
 							pos = pos + 21;
-							gotoxy(pos, 26);
+							gotoxy(pos, posY);
 							printf("▶");
 						}
 						break;
@@ -88,7 +88,7 @@ int selectMenu(int& pageNum, int& endPage) {
 	gotoxy(87, 27);
 	printf("└-----------┘");
 
-	int menu = moveCursor();
+	int menu = moveCursor(26);
 
 	if (menu == 1) {
 		if (pageNum == 1) {
