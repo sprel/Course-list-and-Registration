@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <string>
+#include <vector>
 
 #define LEFT 75
 #define RIGHT 77
@@ -7,6 +8,7 @@
 #define DOWN 80
 
 using std::string;
+using std::vector;
 
 enum Day {
 	DEFAULT = 0,
@@ -40,7 +42,7 @@ void addCourse();
 
 //Course_List.cpp
 void courseList();
-void freadCourse(const char* filename, Course* c, int& lines);
+void freadCourse(const char* filename, vector<Course>& c, int& lines);
 void coutCourse(Course& c, const int& cNum);
 int lineCounter(const char* filename);
 
@@ -48,4 +50,5 @@ int lineCounter(const char* filename);
 int selectMenu(int& pageNum, int& endPage);
 
 //Course_Registration.cpp
-void registration(Course* c);
+void registration(vector<Course>& c);
+int selectCourse(const char* message);
