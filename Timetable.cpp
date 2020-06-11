@@ -57,16 +57,31 @@ void coutTable(string (*table)[5]) {
 	}
 }
 
-void myTable() {
-	const char* filename = "./timetable.txt";
+int selectMenu_T() {
 
-	int num_myCourse;
-	num_myCourse = lineCounter(filename);
+	gotoxy(3, 27);
+	printf("┌----------------┐");
+	gotoxy(3, 28);
+	printf("│   수강 바구니  │");
+	gotoxy(3, 29);
+	printf("└----------------┘");
+	gotoxy(24, 27);
+	printf("┌---------------┐");
+	gotoxy(24, 28);
+	printf("│ 수강 신청 취소│");
+	gotoxy(24, 29);
+	printf("└---------------┘");
+	gotoxy(45, 27);
+	printf("┌------------┐");
+	gotoxy(45, 28);
+	printf("│  뒤로가기  │");
+	gotoxy(45, 29);
+	printf("└------------┘");
 
-	vector<Course> c;
-	c.resize(num_myCourse);
+	int menu = moveCursor(28);
 
-	freadCourse(filename, c, num_myCourse);
+	return menu;
+}
 
 	string table[9][5];
 
@@ -91,10 +106,10 @@ void myTable() {
 				table[i][(*it).day2 - 1] = (*it).courseName;
 			}
 		}
-	}
 
-	coutTable(table);
+		coutTable(table);
 
 	system("pause");
 
+	system("cls");
 }
