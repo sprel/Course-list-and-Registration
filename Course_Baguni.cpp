@@ -31,7 +31,7 @@ void putinBaguni(vector<Course>& c) {
 		cout << "※(실패) 이미 수강 바구니에 담겨 있는 강의입니다.";
 	}
 	else {
-		fwriteCoureseInfo(filename, c[courseNum-1]);
+		fwriteCoureseInfo(filename, c[courseNum-1], "a");
 		coutCourse(c[courseNum-1], 12);
 		gotoxy(2, 27);
 		cout << "  ";

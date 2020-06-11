@@ -64,7 +64,7 @@ void registration(vector<Course>& c) {
 		cout << "※(실패) 이미 수강 신청한 강의와 중복되는 시간대의 강의입니다." << '\n';
 	}
 	else {
-		fwriteCoureseInfo(filename, c[courseNum-1]);
+		fwriteCoureseInfo(filename, c[courseNum-1], "a");
 		coutCourse(c[courseNum-1], 12);
 		gotoxy(2, 27);
 		cout << "  ";

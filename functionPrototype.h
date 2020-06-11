@@ -37,7 +37,7 @@ void gotoxy(int x, int y);
 
 //Course_AddCourse.cpp
 Course& cinCourseInfo(Course& c);
-void fwriteCoureseInfo(const char* filename, Course& c);
+void fwriteCoureseInfo(const char* filename, Course& c, const char* mode);
 void addCourse();
 
 //Course_List.cpp

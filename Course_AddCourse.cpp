@@ -109,9 +109,9 @@ Course& cinCourseInfo(Course& c) {
 	return c;
 }
 
-void fwriteCoureseInfo(const char* filename, Course& c) {
+void fwriteCoureseInfo(const char* filename, Course& c, const char* mode) {
 	FILE* fp;
-	fp = fopen(filename, "a");
+	fp = fopen(filename, mode);
 	if (fp == nullptr) {
 		cout << "파일 열기 실패";
 		return;
@@ -184,7 +184,7 @@ void addCourse() {
 	c = cinCourseInfo(c);
 	const char* filename = "./courseList.txt";
 
-	fwriteCoureseInfo(filename, c);
+	fwriteCoureseInfo(filename, c, "a");
 
 	cout << "강의 추가 성공" << '\n';
 	system("pause");
