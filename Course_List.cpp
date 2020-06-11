@@ -211,9 +211,9 @@ void coutCourse(Course& c, const int& cNum) {
 	cout << c.classroom;
 }
 
-void coutItemname() {
+void coutItemname(const char* title) {
 	gotoxy(40, 1);
-	cout << "<강의 시간표 조회>";
+	cout << title;
 
 	gotoxy(5, 3);
 	cout << "강의명";
@@ -251,7 +251,7 @@ void courseList() {
 	int endPage = ((num_course - 1) / 10) + 1;
 	while (flag) {
 		start = (pageNum - 1) * 10;
-		coutItemname();
+		coutItemname("<강의 시간표 조회>");
 		for (int i = start; i < start + 10; i++) {
 			if (i < num_course) {
 				coutCourse(c[i], i + 1);
