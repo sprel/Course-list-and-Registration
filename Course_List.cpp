@@ -81,13 +81,14 @@ void freadCourse(const char* filename, vector<Course>& c, int& lines) {
 			if (strcmp(day, "금") == 0) {
 				c[j].day2 = FRI;
 			}
+			fgetc(fp);
 		}
 		else {
 			c[j].day2 = DEFAULT;
 		}
-		fgetc(fp);
 
-		char time[10];
+
+		char time[10] = "";
 		i = 0;
 		do {
 			time[i++] = fgetc(fp);
