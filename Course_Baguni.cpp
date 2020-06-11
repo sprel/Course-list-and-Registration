@@ -7,7 +7,7 @@ using std::vector;
 using std::cin;
 using std::cout;
 
-void baguni(vector<Course>& c) {
+void putinBaguni(vector<Course>& c) {
 	vector<Course> baguniC(10);
 	const char* filename = "./baguni.txt";
 

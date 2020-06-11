@@ -272,7 +272,7 @@ void courseList() {
 				break;
 			case 4:
 				//바구니에 담기
-				//baguni();
+				putinBaguni(c);
 				system("cls");
 				break;
 			case 5:
