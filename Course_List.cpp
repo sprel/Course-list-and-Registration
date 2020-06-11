@@ -271,8 +271,7 @@ void courseList() {
 				break;
 			case 4:
 				//바구니에 담기
-				//baguni();
-				system("cls");
+				baguni(c);
 				break;
 			case 5:
 				flag = 0;

@@ -71,6 +71,7 @@ void registration(vector<Course>& c) {
 		gotoxy(3, 28);
 		cout << "해당 강의 수강 신청 성공";
 	}
+	gotoxy(3, 29);
 	system("pause");
 	system("cls");
 
