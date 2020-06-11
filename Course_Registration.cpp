@@ -23,7 +23,7 @@ int selectCourse(const char* message) {
 	cout << message;
 	cin >> courseNum;
 	
-	return 0;
+	return courseNum;
 }
 
 
