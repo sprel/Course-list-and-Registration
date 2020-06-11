@@ -74,6 +74,7 @@ int main() {
 				addCourse();
 				break;
 			case 3:
+				myTable();
 				break;
 			case 4:
 				flag = 0;

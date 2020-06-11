@@ -52,3 +52,6 @@ int selectMenu(int& pageNum, int& endPage);
 //Course_Registration.cpp
 void registration(vector<Course>& c);
 int selectCourse(const char* message);
+
+//Timetable.cpp
+void myTable();
