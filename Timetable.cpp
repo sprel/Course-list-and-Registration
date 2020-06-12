@@ -83,33 +83,71 @@ int selectMenu_T() {
 	return menu;
 }
 
-	string table[9][5];
 
-	int start = -1;
-	int end = -1;
 
-	for (vector<Course>::iterator it = c.begin(); it != c.end(); ++it) {
-		if ((*it).startTime >= 9)
-			start = (*it).startTime - 9;
-		else
-			start = (*it).startTime + 3;
-		if ((*it).endTime >= 9)
-			end = (*it).endTime - 9;
-		else
-			end = (*it).endTime + 3;
+void myTable() {
 	
-		for (size_t i = start; i < end; i++) {
-			table[i][(*it).day1 - 1] = (*it).courseName;
-		}
-		if ((*it).day2 != DEFAULT) {
+	bool flag = 1;
+	while (flag) {
+
+		const char* filenameT = "./timetable.txt";
+
+		int num_myCourse;
+		num_myCourse = lineCounter(filenameT);
+
+		vector<Course> c;
+		c.resize(num_myCourse);
+
+		freadCourse(filenameT, c, num_myCourse);
+
+		string table[9][5];
+
+		int start = -1;
+		int end = -1;
+
+		for (vector<Course>::iterator it = c.begin(); it != c.end(); ++it) {
+			if ((*it).startTime >= 9)
+				start = (*it).startTime - 9;
+			else
+				start = (*it).startTime + 3;
+			if ((*it).endTime >= 9)
+				end = (*it).endTime - 9;
+			else
+				end = (*it).endTime + 3;
+
 			for (size_t i = start; i < end; i++) {
-				table[i][(*it).day2 - 1] = (*it).courseName;
+				table[i][(*it).day1 - 1] = (*it).courseName;
+			}
+			if ((*it).day2 != DEFAULT) {
+				for (size_t i = start; i < end; i++) {
+					table[i][(*it).day2 - 1] = (*it).courseName;
+				}
 			}
 		}
 
 		coutTable(table);
 
-	system("pause");
+		int menu = selectMenu_T();
+
+		const char* filenameB = "./baguni.txt";
+
+		int num_baguni = 0;
+		num_baguni = lineCounter(filenameB);
+
+		int courseNum = 0;
+		
+		switch (menu) {
+			case 1:
+
+				break;
+			case 2:
+				
+				break;
+			case 3:
+				flag = 0;
+				break;
+		}
+	}
 
 	system("cls");
 }
