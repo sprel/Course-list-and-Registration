@@ -8,16 +8,13 @@ using std::cin;
 using std::vector;
 
 int selectCourse(const char* message, int posY) {
-	gotoxy(0, posY-1);
-	cout << "                                                   ";
-	cout << "                                                   ";
-	gotoxy(0, posY);
-	cout << "                                                   ";
-	cout << "                                                   ";
-	gotoxy(0, posY+1);
-	cout << "                                                   ";
-	cout << "                                                   ";
 
+	for (int i = posY - 1; i <= posY + 4; i++) {
+		gotoxy(0, i);
+		cout << "                                                   ";
+		cout << "                                                   ";
+	}
+	
 	gotoxy(3, posY);
 	int courseNum = 0;
 	cout << message << "번호 입력: ";
