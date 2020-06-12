@@ -95,6 +95,7 @@ int selectMenu(int& pageNum, int& endPage) {
 			system("cls");
 			cout << "더 이상 조회할 강의가 없습니다.";
 			system("pause");
+			system("cls");
 			return 0;
 		}
 		else {
@@ -106,6 +107,7 @@ int selectMenu(int& pageNum, int& endPage) {
 			system("cls");
 			cout << "더 이상 조회할 강의가 없습니다.";
 			system("pause");
+			system("cls");
 			return 0;
 		}
 		else {
