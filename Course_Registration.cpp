@@ -57,7 +57,7 @@ int registration(vector<Course>& c, int posY) {
 	if (duplName) {
 		cout << "※(실패) 이미 수강 신청한 강의입니다." << '\n';
 	}
-	if (duplTime) {
+	else if (duplTime) {
 		cout << "※(실패) 이미 수강 신청한 강의와 중복되는 시간대의 강의입니다." << '\n';
 	}
 	else {
@@ -72,4 +72,10 @@ int registration(vector<Course>& c, int posY) {
 	system("pause");
 	system("cls");
 
+	if (duplName == 1 || duplTime == 1) {
+		return -1;
+	}
+	else {
+		return courseNum;
+	}
 }
