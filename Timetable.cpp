@@ -163,7 +163,23 @@ void myTable() {
 				}
 				break;
 			case 2:
-				
+				if (num_myCourse == 0) {
+					noContent("※ 수강 신청한 강의가 없습니다.");
+				}
+				else {
+					system("cls");
+					coutItemname("<수강 신청 목록>");
+					for (int i = 0; i < num_myCourse; i++) {
+						coutCourse(c[i], i + 1);
+					}
+					courseNum = selectCourse("(수강 신청 취소) ", 26);
+					deleteCourse(c, num_myCourse, filenameT, courseNum);
+					gotoxy(3, 27);
+					cout << "(수강 신청 취소) 성공";
+					gotoxy(3, 28);
+					system("pause");
+					system("cls");
+				}
 				break;
 			case 3:
 				flag = 0;
