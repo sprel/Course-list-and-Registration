@@ -268,7 +268,7 @@ void courseList() {
 				break;
 			case 3:
 				//수강신청
-				registration(c, 27);
+				registration(c, 26);
 				break;
 			case 4:
 				//바구니에 담기
