@@ -55,5 +55,10 @@ int moveCursor(int posY);
 int registration(vector<Course>& c, int posY);
 int selectCourse(const char* message, int posY);
 
+//Course_Baguni.cpp
+void putinBaguni(vector<Course>& c);
+void openBaguni();
+void deleteCourse(vector<Course>& c, int& num_course, const char* filename, int& courseNum);
+
 //Timetable.cpp
 void myTable();

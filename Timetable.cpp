@@ -83,7 +83,23 @@ int selectMenu_T() {
 	return menu;
 }
 
+void noContent(const char* message) {
+	gotoxy(0, 28 - 1);
+	cout << "                                                   ";
+	cout << "                                                   ";
+	gotoxy(0, 28);
+	cout << "                                                   ";
+	cout << "                                                   ";
+	gotoxy(0, 28 + 1);
+	cout << "                                                   ";
+	cout << "                                                   ";
+	gotoxy(3, 28);
+	cout << message;
 
+	gotoxy(3, 29);
+	system("pause");
+	system("cls");
+}
 
 void myTable() {
 	
@@ -138,7 +154,13 @@ void myTable() {
 		
 		switch (menu) {
 			case 1:
-
+				if (num_baguni == 0) {
+					noContent("※ 수강 바구니에 담긴 강의가 없습니다.");
+				}
+				else {
+					system("cls");
+					openBaguni();
+				}
 				break;
 			case 2:
 				
