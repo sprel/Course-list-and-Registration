@@ -100,7 +100,13 @@ void openBaguni() {
 				}
 				break;
 			case 2:
-
+				courseNum = selectCourse("(항목 삭제) ", 26);
+				deleteCourse(baguniC, num_baguni, filename, courseNum);
+				gotoxy(3, 27);
+				cout << "(항목 삭제) 성공";
+				gotoxy(3, 28);
+				system("pause");
+				system("cls");
 				break;
 			case 3:
 				flag = 0;
