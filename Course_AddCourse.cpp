@@ -29,9 +29,17 @@ Course& cinCourseInfo(Course& c) {
 	cin >> credit;
 	c.credit = credit;
 
-	char twotimes;
-	cout << "주 2회 강의 여부(y/n): ";
-	cin >> twotimes;
+	char twotimes = ' ';
+	while (true) {
+		cout << "주 2회 강의 여부(y/n): ";
+		cin >> twotimes;
+		if (twotimes != 'y' && twotimes != 'n') {
+			cout << "잘못된 값을 입력하셨습니다.";
+		}
+		else {
+			break;
+		}
+	}
 
 	int day1 = 0;
 	int day2 = 0;
@@ -101,9 +109,9 @@ Course& cinCourseInfo(Course& c) {
 	return c;
 }
 
-void fwriteCoureseInfo(const char* filename, Course& c) {
+void fwriteCoureseInfo(const char* filename, Course& c, const char* mode) {
 	FILE* fp;
-	fp = fopen(filename, "a");
+	fp = fopen(filename, mode);
 	if (fp == nullptr) {
 		cout << "파일 열기 실패";
 		return;
@@ -176,7 +184,7 @@ void addCourse() {
 	c = cinCourseInfo(c);
 	const char* filename = "./courseList.txt";
 
-	fwriteCoureseInfo(filename, c);
+	fwriteCoureseInfo(filename, c, "a");
 
 	cout << "강의 추가 성공" << '\n';
 	system("pause");

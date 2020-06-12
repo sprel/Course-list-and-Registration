@@ -61,7 +61,7 @@ int selectMenu_Main() {
 
 int main() {
 
-	int menu = 1;
+	int menu = 0;
 	bool flag = 1;
 	while (flag) {
 		menu = selectMenu_Main();
@@ -74,6 +74,7 @@ int main() {
 				addCourse();
 				break;
 			case 3:
+				myTable();
 				break;
 			case 4:
 				flag = 0;

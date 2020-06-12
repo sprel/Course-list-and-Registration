@@ -81,13 +81,14 @@ void freadCourse(const char* filename, vector<Course>& c, int& lines) {
 			if (strcmp(day, "금") == 0) {
 				c[j].day2 = FRI;
 			}
+			fgetc(fp);
 		}
 		else {
 			c[j].day2 = DEFAULT;
 		}
-		fgetc(fp);
 
-		char time[10];
+
+		char time[10] = "";
 		i = 0;
 		do {
 			time[i++] = fgetc(fp);
@@ -210,9 +211,9 @@ void coutCourse(Course& c, const int& cNum) {
 	cout << c.classroom;
 }
 
-void coutItemname() {
+void coutItemname(const char* title) {
 	gotoxy(40, 1);
-	cout << "<강의 시간표 조회>";
+	cout << title;
 
 	gotoxy(5, 3);
 	cout << "강의명";
@@ -250,7 +251,7 @@ void courseList() {
 	int endPage = ((num_course - 1) / 10) + 1;
 	while (flag) {
 		start = (pageNum - 1) * 10;
-		coutItemname();
+		coutItemname("<강의 시간표 조회>");
 		for (int i = start; i < start + 10; i++) {
 			if (i < num_course) {
 				coutCourse(c[i], i + 1);
@@ -267,11 +268,11 @@ void courseList() {
 				break;
 			case 3:
 				//수강신청
-				registration(c);
+				registration(c, 26);
 				break;
 			case 4:
 				//바구니에 담기
-				//baguni();
+				putinBaguni(c);
 				system("cls");
 				break;
 			case 5:
@@ -281,7 +282,6 @@ void courseList() {
 
 
 	}
-
 	system("cls");
 }
 

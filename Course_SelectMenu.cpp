@@ -7,6 +7,54 @@
 
 using std::cout;
 
+int moveCursor(int posY) {
+	int pos = 0;
+	int key = 0;
+
+	pos = 1;
+	gotoxy(pos, posY);
+	printf("▶");
+	while (1)
+	{
+		Sleep(200);
+		if (_kbhit())
+		{
+			key = _getch();
+			if (key == 224)
+			{
+				key = _getch();
+				switch (key)
+				{
+					case LEFT:
+						if (pos > 1)
+						{
+							gotoxy(pos, posY);
+							printf("  ");
+							pos = pos - 21;
+							gotoxy(pos, posY);
+							printf("▶");
+						}
+						break;
+					case RIGHT:
+						if (pos < 85)
+						{
+							gotoxy(pos, posY);
+							printf("  ");
+							pos = pos + 21;
+							gotoxy(pos, posY);
+							printf("▶");
+						}
+						break;
+				}
+			}
+			if (key == 13)
+				break;
+		}
+	}
+
+	return (pos - 1) / 21 + 1;
+}
+
 int selectMenu(int& pageNum, int& endPage) {
 
 	gotoxy(3, 25);
@@ -40,57 +88,14 @@ int selectMenu(int& pageNum, int& endPage) {
 	gotoxy(87, 27);
 	printf("└-----------┘");
 
-	int pos = 0;
-	int key = 0;
-
-	pos = 1;
-	gotoxy(pos, 26);
-	printf("▶");
-	while (1)
-	{
-		Sleep(200);
-		if (_kbhit())
-		{
-			key = _getch();
-			if (key == 224)
-			{
-				key = _getch();
-				switch (key)
-				{
-					case LEFT:
-						if (pos > 1)
-						{
-							gotoxy(pos, 26);
-							printf("  ");
-							pos = pos - 21;
-							gotoxy(pos, 26);
-							printf("▶");
-						}
-						break;
-					case RIGHT:
-						if (pos < 85)
-						{
-							gotoxy(pos, 26);
-							printf("  ");
-							pos = pos + 21;
-							gotoxy(pos, 26);
-							printf("▶");
-						}
-						break;
-				}
-			}
-			if (key == 13)
-				break;
-		}
-	}
-
-	int menu = (pos - 1) / 21 + 1;
+	int menu = moveCursor(26);
 
 	if (menu == 1) {
 		if (pageNum == 1) {
 			system("cls");
 			cout << "더 이상 조회할 강의가 없습니다.";
 			system("pause");
+			system("cls");
 			return 0;
 		}
 		else {
@@ -102,6 +107,7 @@ int selectMenu(int& pageNum, int& endPage) {
 			system("cls");
 			cout << "더 이상 조회할 강의가 없습니다.";
 			system("pause");
+			system("cls");
 			return 0;
 		}
 		else {

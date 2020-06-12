@@ -7,30 +7,27 @@ using std::cout;
 using std::cin;
 using std::vector;
 
-int selectCourse(const char* message) {
-	gotoxy(0, 25);
-	cout << "                                                   ";
-	cout << "                                                   ";
-	gotoxy(0, 26);
-	cout << "                                                   ";
-	cout << "                                                   ";
-	gotoxy(0, 27);
-	cout << "                                                   ";
-	cout << "                                                   ";
+int selectCourse(const char* message, int posY) {
 
-	gotoxy(3, 26);
+	for (int i = posY - 1; i <= posY + 4; i++) {
+		gotoxy(0, i);
+		cout << "                                                   ";
+		cout << "                                                   ";
+	}
+	
+	gotoxy(3, posY);
 	int courseNum = 0;
-	cout << message;
+	cout << message << "번호 입력: ";
 	cin >> courseNum;
 	
 	return courseNum;
 }
 
 
-void registration(vector<Course>& c) {
+int registration(vector<Course>& c, int posY) {
 
 	int courseNum = 0;
-	courseNum = selectCourse("(수강 신청) 강의 번호 입력: ");
+	courseNum = selectCourse("(수강 신청) 강의 ", posY);
 
 	const char* filename = "./timetable.txt";
 	//내 시간표랑 겹치는지 체크
@@ -56,22 +53,29 @@ void registration(vector<Course>& c) {
 		}
 	}
 
-	gotoxy(3, 27);
+	gotoxy(3, posY + 1);
 	if (duplName) {
 		cout << "※(실패) 이미 수강 신청한 강의입니다." << '\n';
 	}
-	if (duplTime) {
+	else if (duplTime) {
 		cout << "※(실패) 이미 수강 신청한 강의와 중복되는 시간대의 강의입니다." << '\n';
 	}
 	else {
-		fwriteCoureseInfo(filename, c[courseNum-1]);
-		coutCourse(c[courseNum-1], 12);
-		gotoxy(2, 27);
+		fwriteCoureseInfo(filename, c[courseNum-1], "a");
+		coutCourse(c[courseNum-1], posY-14);
+		gotoxy(2, posY + 1);
 		cout << "  ";
-		gotoxy(3, 28);
+		gotoxy(3, posY + 2);
 		cout << "해당 강의 수강 신청 성공";
 	}
+	gotoxy(3, posY+3);
 	system("pause");
 	system("cls");
 
+	if (duplName == 1 || duplTime == 1) {
+		return -1;
+	}
+	else {
+		return courseNum;
+	}
 }

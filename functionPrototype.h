@@ -37,18 +37,28 @@ void gotoxy(int x, int y);
 
 //Course_AddCourse.cpp
 Course& cinCourseInfo(Course& c);
-void fwriteCoureseInfo(const char* filename, Course& c);
+void fwriteCoureseInfo(const char* filename, Course& c, const char* mode);
 void addCourse();
 
 //Course_List.cpp
 void courseList();
 void freadCourse(const char* filename, vector<Course>& c, int& lines);
+void coutItemname(const char* title);
 void coutCourse(Course& c, const int& cNum);
 int lineCounter(const char* filename);
 
 //Course_SelecMenu.cpp
 int selectMenu(int& pageNum, int& endPage);
+int moveCursor(int posY);
 
 //Course_Registration.cpp
-void registration(vector<Course>& c);
-int selectCourse(const char* message);
+int registration(vector<Course>& c, int posY);
+int selectCourse(const char* message, int posY);
+
+//Course_Baguni.cpp
+void putinBaguni(vector<Course>& c);
+void openBaguni();
+void deleteCourse(vector<Course>& c, int& num_course, const char* filename, int& courseNum);
+
+//Timetable.cpp
+void myTable();
