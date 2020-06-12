@@ -65,18 +65,6 @@ int selectMenu_Main() {
 	gotoxy(x, y + 21);
 	printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
 
-
-	//gotoxy(x, y);
-	//cout << "메뉴 선택";
-	//gotoxy(x, y + 2);
-	//cout << "강의 시간표 조회";
-	//gotoxy(x, y + 4);
-	//cout << "강의 추가";
-	//gotoxy(x, y + 6);
-	//cout << "내 시간표 보기";
-	//gotoxy(x, y + 8);
-	//cout << "종료";
-
 	int key = 0;
 	int posY = y + 5;
 	int menu = 0;
@@ -127,10 +115,10 @@ int main() {
 		system("cls");
 		switch (menu) {
 			case 1:
-				courseList();
+				addCourse();
 				break;
 			case 2:
-				addCourse();
+				courseList();
 				break;
 			case 3:
 				myTable();
